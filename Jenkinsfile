@@ -6,11 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone Source') {
-            steps {
-                git 'https://github.com/paranjaypatil26/my-app.git'
-            }
-        }
+       
 
         stage('Build Docker Image') {
             steps {
