@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Source') {
             steps {
-                git 'https://github.com/your-username/my-app.git'
+                git 'https://github.com/paranjaypatil26/my-app.git'
             }
         }
 
