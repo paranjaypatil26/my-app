@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "your-dockerhub-username/myapp"
+        IMAGE_NAME = "paranjaypatil26/myapp"
     }
 
     stages {
-       
 
         stage('Build Docker Image') {
             steps {
@@ -17,7 +16,9 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
-                    sh 'echo $DOCKER_TOKEN | docker login -u your-dockerhub-username --password-stdin'
+                    sh '''
+                    echo "$DOCKER_TOKEN" | docker login -u paranjaypatil26 --password-stdin
+                    '''
                 }
             }
         }
@@ -27,5 +28,6 @@ pipeline {
                 sh 'docker push $IMAGE_NAME:latest'
             }
         }
+
     }
 }
